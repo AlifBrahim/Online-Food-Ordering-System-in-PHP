@@ -91,6 +91,14 @@
 include("connection/connect.php"); 
 error_reporting(0); 
 session_start(); 
+
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+}
 if(isset($_POST['submit']))  
 {
 	$username = $_POST['username'];  
@@ -111,6 +119,9 @@ if(isset($_POST['submit']))
 							    {
                                       	$message = "Invalid Username or Password!"; 
                                 }
+debug_to_console($_SESSION);
+
+
 	 }
 	
 	

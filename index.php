@@ -67,6 +67,15 @@ session_start();
 
 
                         <?php
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+
+    echo "<script>console.log('Debug Session: " . $output . "' );</script>";
+}
+debug_to_console($_SESSION);
+
 						if(empty($_SESSION["user_id"])) // if user is not login
 							{
 								echo '<li class="nav-item"><a href="login.php" class="nav-link active">Login</a> </li>
